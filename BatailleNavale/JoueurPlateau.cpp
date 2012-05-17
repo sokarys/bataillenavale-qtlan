@@ -6,11 +6,11 @@
  */
 
 #include "JoueurPlateau.h"
+using namespace std;
 
-JoueurPlateau::JoueurPlateau() {
-}
-
-JoueurPlateau::JoueurPlateau(const JoueurPlateau& orig) {
+JoueurPlateau::JoueurPlateau(Joueur* j, Plateau* p){
+    this->joueur = j;
+    this->plateau = p;
 }
 
 JoueurPlateau::~JoueurPlateau() {

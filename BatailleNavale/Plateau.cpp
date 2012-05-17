@@ -1,6 +1,5 @@
 #include "Plateau.h"
 
-#include <string>
 
 using namespace std;
 
@@ -46,7 +45,7 @@ bool Plateau::SetBateau(int taille, int x, int y, ALLIGNEMENT_BATEAU a){
 //              
 //            }
             for(int ytmp = y; ytmp < y + taille; ytmp++){
-                free(this->plateau[x][ytmp]);
+                delete this->plateau[x][ytmp];
                 this->plateau[x][ytmp] = btmp->AddBateauCase(x,ytmp); 
             }
             return true;
@@ -56,7 +55,7 @@ bool Plateau::SetBateau(int taille, int x, int y, ALLIGNEMENT_BATEAU a){
             Bateau* btmp = new Bateau(x,y,a, taille);
 //TODO:ADD check if we add a boat on another boat
             for(int xtmp = x; xtmp < x + taille; xtmp++){
-                free(this->plateau[xtmp][y]);
+                delete this->plateau[xtmp][y];
                 this->plateau[xtmp][y] = btmp->AddBateauCase(xtmp,y); 
             }
             return true;
@@ -88,6 +87,14 @@ int Plateau::GetTailleX(){
     return this->tailleX;
 }
 
+bool Plateau::IsAllBateauCoule(){
+    for(int unsigned i=0; i<this->listeBateau.size(); i++){
+        if(this->listeBateau[i]->GetEtat() == PAS_COULE){
+            return false;
+        }
+    }
+    return true;
+}
 /**
  * 
  * @return taille du plateau en Y
@@ -134,4 +141,16 @@ string** Plateau::GetPlateauJoueur(){
         return rpr;
     }
     return NULL;
+}
+
+void Plateau::JouerBateauCase(int x, int y){
+    BateauCasePleine* bateauCase;
+    BateauCaseVide* bateauCaseV;
+    BateauCase* theBC = this->plateau[x][y];
+   
+    if(bateauCase = (dynamic_cast<BateauCasePleine*>(theBC))){
+       bateauCase->SetEtat(TOUCHE);
+    }else if(bateauCaseV = (dynamic_cast<BateauCaseVide*>(theBC))){
+       bateauCaseV->SetEtat(EAU);
+    }
 }

@@ -21,7 +21,10 @@ int main(int argc, char** argv) {
     Controller c = Controller();
     cout << p->SetBateau(3,3,2,HORIZONTAL) << endl;
     cout << p->SetBateau(2,0,0,VERTICAL) << endl;
-    
+    p->JouerBateauCase(0,0);
+    p->JouerBateauCase(1,0);
+    p->JouerBateauCase(1,1);
+    p->JouerBateauCase(3,3);
     string** rpr;
     string** rpr2 = p->GetPlateauAdversaire();
     rpr = p->GetPlateauJoueur();
@@ -32,6 +35,7 @@ int main(int argc, char** argv) {
         }
         cout << endl;
     }
+    
     cout << endl;
     cout << endl;
     cout << endl;
@@ -41,6 +45,8 @@ int main(int argc, char** argv) {
         }
         cout << endl;
     }
+    
+    cout << " pl " << p->IsAllBateauCoule() << endl;
     
     //c.AfficherPlateau(p);
     //cout << endl;

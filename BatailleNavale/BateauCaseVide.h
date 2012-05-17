@@ -9,6 +9,7 @@
 #define	BATEAUCASEVIDE_H
 
 #include "BateauCase.h"
+using namespace std;
 
 class BateauCaseVide : public BateauCase {
     public:
