@@ -25,9 +25,18 @@ int Bateau::GetX()
   *
   * return the etat of the boat : coule or not coule
   */
-bool Bateau::GetEtat()
+ETAT_BATEAU Bateau::GetEtat()
 {
     return this->etat;
+}
+
+void Bateau::SetEtat(ETAT_BATEAU etat){
+    this->etat = etat;
+    if(etat == COULE){
+        for(int unsigned i=0;i<this->listeBateauCase.size();i++){
+         this->listeBateauCase[i]->SetEtat(COULE_BC);
+     } 
+    }
 }
 
 /** @brief GetBateauCase
@@ -51,7 +60,6 @@ BateauCase* Bateau::AddBateauCase(int x, int y)
     BateauCasePleine* bc = new BateauCasePleine(x, y, this);
     this->listeBateauCase.push_back(bc);
     return bc;
-    return NULL;
 }
 
 /** @brief Bateau
@@ -75,4 +83,14 @@ BateauCase* Bateau::AddBateauCase(int x, int y)
   */
  Bateau::~Bateau(){
      
+ }
+ 
+ void Bateau::CheckEtat(){
+     
+     for(int unsigned i=0;i<this->listeBateauCase.size();i++){
+         if(this->listeBateauCase[i]->GetEtat() == PAS_JOUEE){
+             return;
+         }
+     } 
+     this->SetEtat(COULE);
  }

@@ -7,8 +7,6 @@
 
 #include "BateauCasePleine.h"
 
-#include <string>
-#include <sstream>
 
 using namespace std;
 
@@ -18,6 +16,11 @@ BateauCasePleine::BateauCasePleine(int x, int y, Bateau* bateau) : BateauCase(x,
 
 BateauCasePleine::~BateauCasePleine(){
     
+}
+
+void BateauCasePleine::SetEtat(ETAT_BATEAUCASE etat){
+    BateauCase::SetEtat(etat);
+    this->bateau->CheckEtat();
 }
 
 Bateau* BateauCasePleine::GetBateau(){

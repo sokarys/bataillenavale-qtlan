@@ -1,12 +1,13 @@
 #ifndef BATEAUCASE_H
 #define BATEAUCASE_H
 
+//#include "Bateau.h"
 #include <string>
 #include <ostream>
 
 using namespace std;
 
-enum ETAT_BATEAUCASE {TOUCHE, EAU, PAS_JOUEE};
+enum ETAT_BATEAUCASE {TOUCHE, EAU, PAS_JOUEE, COULE_BC};
 
 class BateauCase
 {

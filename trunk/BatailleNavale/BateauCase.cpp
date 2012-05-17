@@ -12,14 +12,16 @@ BateauCase::BateauCase(int x, int y)
 }
 
 string BateauCase::GetRepresentation(){
-    return "0";
+    return "P";
 }
 
 string BateauCase::GetRepresentationAdversaire(){
     if(this->GetEtat() == PAS_JOUEE){
-        return "0";
+        return "_";
     }else if(this->GetEtat() == TOUCHE){
         return "T";
+    }else if(this->GetEtat() == COULE_BC){
+        return "C";
     }
     return "E";
 }

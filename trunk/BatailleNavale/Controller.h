@@ -8,7 +8,14 @@
 #ifndef CONTROLLER_H
 #define	CONTROLLER_H
 
+#include <iostream>
+#include <string>
+
 #include "Plateau.h"
+#include "BateauCase.h"
+
+
+using namespace std;
 
 class Controller {
     public:

@@ -1,8 +1,7 @@
 #ifndef JOUEUR_H
 #define JOUEUR_H
 
-//#include "Partie.h"
-#include "Plateau.h"
+#include "Bateau.h"
 
 #include <string>
 
@@ -19,13 +18,10 @@ class Joueur
         string** GetPlateauJoueur();
         string** GetPlateauAdversaire();
         
-        
     protected:
         
     private:
         string name;
-        Plateau* plateau;
-//        Partie* partie;
         
 };
 

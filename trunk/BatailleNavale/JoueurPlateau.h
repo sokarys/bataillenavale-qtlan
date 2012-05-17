@@ -8,12 +8,17 @@
 #ifndef JOUEURPLATEAU_H
 #define	JOUEURPLATEAU_H
 
+#include "Plateau.h"
+#include "Joueur.h"
+using namespace std;
+
 class JoueurPlateau {
-public:
-    JoueurPlateau();
-    JoueurPlateau(const JoueurPlateau& orig);
-    virtual ~JoueurPlateau();
-private:
+    public:
+        JoueurPlateau(Joueur* j, Plateau* p);
+        virtual ~JoueurPlateau();
+    private:
+        Joueur* joueur;
+        Plateau* plateau;
 
 };
 

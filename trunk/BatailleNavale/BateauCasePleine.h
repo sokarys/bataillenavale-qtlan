@@ -8,9 +8,13 @@
 #ifndef BATEAUCASEPLEINE_H
 #define	BATEAUCASEPLEINE_H
 
-#include "Bateau.h"
 #include "BateauCase.h"
+#include "Bateau.h"
 
+#include <string>
+#include <sstream>
+
+using namespace std;
 
 class BateauCasePleine : public BateauCase {
     
@@ -19,6 +23,7 @@ class BateauCasePleine : public BateauCase {
         ~BateauCasePleine();
         Bateau* GetBateau();
         void SetBateau(Bateau* bateau);
+        void SetEtat(ETAT_BATEAUCASE etat);
     
         string GetRepresentation();
         

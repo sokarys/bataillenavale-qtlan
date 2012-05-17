@@ -7,12 +7,6 @@
 
 #include "Controller.h"
 
-#include <iostream>
-#include <string>
-
-#include "BateauCase.h"
-#include "Plateau.h"
-
 using namespace std;
 
 Controller::Controller() {

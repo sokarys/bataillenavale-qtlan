@@ -1,12 +1,12 @@
 #ifndef BATEAU_H
 #define BATEAU_H
 
-#include "BateauCase.h"
-
 enum ALLIGNEMENT_BATEAU {VERTICAL, HORIZONTAL};
 enum ETAT_BATEAU {COULE, PAS_COULE};
 
+#include "BateauCase.h"
 #include <vector>
+
 
 using namespace std;
 
@@ -17,7 +17,9 @@ class Bateau
         ~Bateau();
         BateauCase* AddBateauCase(int x, int y);
         BateauCase* GetBateauCase(int x, int y);
-        bool GetEtat();
+        void CheckEtat();
+        ETAT_BATEAU GetEtat();
+        void SetEtat(ETAT_BATEAU etat);
         int GetX();
         int GetY();
         int GetTaille();
