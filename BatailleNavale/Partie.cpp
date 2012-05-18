@@ -34,9 +34,17 @@ void Partie::AddJoueur(Joueur* joueur){
  * @param joueur
  */
 void Partie::DelJoueur(Joueur* joueur){
-    
+    vector<JoueurPlateau*>::iterator it;
+    it = this->listeJoueur.begin();
+    while(it != this->listeJoueur.end()){
+        JoueurPlateau* jp = *it;
+        if(jp->IsJoueurEqals(joueur)){
+            this->listeJoueur.erase(it);
+            break;
+        }
+        ++it;
+    }
 }
-
 /**
  * Initialise la partie :
  * Crés les plateaux, met l'état des joueurs en partie, etc..
