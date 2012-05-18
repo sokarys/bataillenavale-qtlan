@@ -13,7 +13,7 @@ using namespace std;
 class Bateau
 {
     public:
-        Bateau(int x, int y, ALLIGNEMENT_BATEAU align, int taille);
+        Bateau(int x, int y, ALLIGNEMENT_BATEAU align, int taille, string name="NoName");
         ~Bateau();
         BateauCase* AddBateauCase(int x, int y);
         BateauCase* GetBateauCase(int x, int y);
@@ -23,7 +23,8 @@ class Bateau
         int GetX();
         int GetY();
         int GetTaille();
-
+        string GetName();
+        
     protected:
 
     private:
@@ -32,6 +33,7 @@ class Bateau
         int y;
         int taille;
         ETAT_BATEAU etat;
+        string name;
         vector<BateauCase*> listeBateauCase;
 };
 
