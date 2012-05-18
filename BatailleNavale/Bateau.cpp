@@ -66,7 +66,7 @@ BateauCase* Bateau::AddBateauCase(int x, int y)
   *
   * construcutor
   */
- Bateau::Bateau(int x, int y, ALLIGNEMENT_BATEAU align, int taille)
+ Bateau::Bateau(int x, int y, ALLIGNEMENT_BATEAU align, int taille, string name)
 {
     this->x = x;
     this->y = y;
@@ -74,6 +74,7 @@ BateauCase* Bateau::AddBateauCase(int x, int y)
     this->alignement = align;
     this->taille = taille;
     this->listeBateauCase = vector<BateauCase*>();
+    this->name = name;
 }
  int Bateau::GetTaille(){
      return this->taille;
@@ -84,7 +85,17 @@ BateauCase* Bateau::AddBateauCase(int x, int y)
  Bateau::~Bateau(){
      
  }
+ /**
+  * 
+  * @return 
+  */
+ string Bateau::GetName(){
+     return this->name;
+ }
  
+ /**
+  * 
+  */
  void Bateau::CheckEtat(){
      
      for(int unsigned i=0;i<this->listeBateauCase.size();i++){
