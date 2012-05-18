@@ -16,6 +16,11 @@ class JoueurPlateau {
     public:
         JoueurPlateau(Joueur* j, Plateau* p);
         virtual ~JoueurPlateau();
+        
+        Joueur* GetJoueur();
+        Plateau* GetPlateau();
+        
+        bool IsJoueurEqals(Joueur* j);
     private:
         Joueur* joueur;
         Plateau* plateau;

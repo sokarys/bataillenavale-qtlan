@@ -16,3 +16,14 @@ JoueurPlateau::JoueurPlateau(Joueur* j, Plateau* p){
 JoueurPlateau::~JoueurPlateau() {
 }
 
+Joueur* JoueurPlateau::GetJoueur(){
+    return this->joueur;
+}
+
+Plateau* JoueurPlateau::GetPlateau(){
+    return this->plateau;
+}
+
+bool JoueurPlateau::IsJoueurEqals(Joueur* j){
+     return this->joueur->IsEgal(*j);
+}
