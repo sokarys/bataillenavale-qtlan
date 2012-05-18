@@ -66,7 +66,7 @@ BateauCase* Bateau::AddBateauCase(int x, int y)
   *
   * construcutor
   */
- Bateau::Bateau(int x, int y, ALLIGNEMENT_BATEAU align, int taille, string name)
+ Bateau::Bateau(int x, int y, ALLIGNEMENT align, int taille, string name)
 {
     this->x = x;
     this->y = y;
