@@ -1,6 +1,8 @@
 #ifndef PLATEAU_H
 #define PLATEAU_H
 
+//#include "Bonus.h"
+#include "Variable.h"
 #include "Bateau.h"
 #include "BateauCase.h"
 #include "BateauCaseVide.h"
@@ -23,10 +25,11 @@ class Plateau
     public:
         /*Constructeur*/
         Plateau(int tailleX, int tailleY);
+//        virtual ~Plateau(){};
 
         /*permet de placer un bateau sur le plateau en x,y, avec le bon allignement,
          *  si rajout d'un bateau dell le bateaucasevide avant pour eviter les fuite memoire*/
-        bool SetBateau(int taille, int x, int y, ALLIGNEMENT_BATEAU a);
+        bool SetBateau(int taille, int x, int y, ALLIGNEMENT a);
         
         /*renvoie le bateau situee en x,y*/
         Bateau* GetBateau(int x, int y);

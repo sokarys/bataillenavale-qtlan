@@ -21,6 +21,11 @@ class Controller {
     public:
         Controller();
         virtual ~Controller();
+        
+//        string** GetPlateauJoue(Joueur* j);
+//        string** GetPlateauAdversaire(Joueur* j);
+//        string** GetPlateauPositionBateau(Joueur* j);
+        
         void AfficherPlateau(Plateau* p);
         void AfficherPlateauAdversaire(Plateau* p);
     private:

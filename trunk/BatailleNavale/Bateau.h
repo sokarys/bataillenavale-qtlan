@@ -1,9 +1,7 @@
 #ifndef BATEAU_H
 #define BATEAU_H
 
-enum ALLIGNEMENT_BATEAU {VERTICAL, HORIZONTAL};
-enum ETAT_BATEAU {COULE, PAS_COULE};
-
+#include "Variable.h"
 #include "BateauCase.h"
 #include <vector>
 
@@ -13,7 +11,7 @@ using namespace std;
 class Bateau
 {
     public:
-        Bateau(int x, int y, ALLIGNEMENT_BATEAU align, int taille, string name="NoName");
+        Bateau(int x, int y, ALLIGNEMENT align, int taille, string name="NoName");
         ~Bateau();
         BateauCase* AddBateauCase(int x, int y);
         BateauCase* GetBateauCase(int x, int y);
@@ -28,7 +26,7 @@ class Bateau
     protected:
 
     private:
-        ALLIGNEMENT_BATEAU alignement;
+        ALLIGNEMENT alignement;
         int x;
         int y;
         int taille;

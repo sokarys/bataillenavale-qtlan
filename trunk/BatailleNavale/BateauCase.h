@@ -1,13 +1,18 @@
 #ifndef BATEAUCASE_H
 #define BATEAUCASE_H
 
+//#include "Bonus.h"
+
 //#include "Bateau.h"
+//#include "Plateau.h"
 #include <string>
 #include <ostream>
+#include "Variable.h"
+//#include "Bonus.h"
+
+class Bonus;
 
 using namespace std;
-
-enum ETAT_BATEAUCASE {TOUCHE, EAU, PAS_JOUEE, COULE_BC};
 
 class BateauCase
 {
@@ -23,6 +28,8 @@ class BateauCase
         virtual string GetRepresentation();
         string GetRepresentationAdversaire();
         friend ostream& operator<< (ostream& out, BateauCase& b);
+        void SetBonus(Bonus* bonus);
+        Bonus* GetBonus();
         
     protected:
 
@@ -30,6 +37,8 @@ class BateauCase
         int x;
         int y;
         ETAT_BATEAUCASE etat;
+        Bonus* bonus;
+//        Bonus* bonus;
 };
 
 #endif // BATEAUCASE_H
