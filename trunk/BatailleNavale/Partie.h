@@ -3,6 +3,7 @@
 
 #include <vector>
 #include "Joueur.h"
+#include "JoueurPlateau.h"
 
 using namespace std;
 
@@ -16,6 +17,10 @@ class Partie
         void DelJoueur(int indexJoueur);
         void InitPartie();
         void JoueurSuivant();
+        void JoueurCourantJoue(int x, int y);
+        string** JoueurPlateauPlacementBateau(Joueur* j); /*renvoie le plateau ou il y a ses bateaux*/
+        string** JoueurPlateauAdversaire(Joueur* j); /*renvoie le plateau ou son adversaire a joue*/
+        string** JoueurPlateauJoue(Joueur* j); /*renvoie le plateau du joueur ou il a joue (sur le plateau de l'adversaire)*/
         Joueur* GetGagnant();
     
     protected:
@@ -23,8 +28,8 @@ class Partie
     private:
         bool partieLance;
         int NbBateauMax;
-        vector<Joueur*> listeJoueur;
-        Joueur* joueurCourant;
+        vector<JoueurPlateau*> listeJoueur;
+        JoueurPlateau* joueurCourant;
 };
 
 #endif // PARTIE_H
