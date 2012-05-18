@@ -17,8 +17,12 @@ Partie::~Partie()
  * Rajoute un joueur à la partie
  * @param joueur
  */
-void Partie::AddJoueur(Joueur* joueur){
-    
+void Partie::AddJoueur(Joueur& joueur){
+
+    if(this->listeJoueur.size() >= MAX_JOUEUR){
+        return;
+    }
+    //this->listeJoueur.push_back(joueur);
 }
 /**
  * Supprime un joueur de la partie
