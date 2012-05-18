@@ -81,6 +81,22 @@ void BateauCase::SetX(int x)
 }
 
 /**
+ * Set un bonus a la bateauCase
+ * @param bonus
+ */
+void BateauCase::SetBonus(Bonus* bonus){
+    this->bonus = bonus;
+}
+
+/**
+ * 
+ * @return le bonus de la case associé
+ */
+Bonus* BateauCase::GetBonus(){
+    return this->bonus;
+}
+        
+/**
  * 
  * @param out 
  * @param b

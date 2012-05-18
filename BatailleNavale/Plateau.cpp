@@ -32,7 +32,7 @@ BateauCase* Plateau::GetBateauCase(int x, int y){
 }
 
 
-bool Plateau::SetBateau(int taille, int x, int y, ALLIGNEMENT_BATEAU a){
+bool Plateau::SetBateau(int taille, int x, int y, ALLIGNEMENT a){
     if(a == HORIZONTAL){
         if(y + taille < this->tailleY){
             Bateau* btmp = new Bateau(x,y,a, taille);
