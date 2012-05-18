@@ -39,10 +39,16 @@ OBJECTFILES= \
 	${OBJECTDIR}/Plateau.o \
 	${OBJECTDIR}/Bateau.o \
 	${OBJECTDIR}/main.o \
+	${OBJECTDIR}/JoueurPlateau.o \
+	${OBJECTDIR}/Historique.o \
+	${OBJECTDIR}/Bonus.o \
+	${OBJECTDIR}/BonusManager.o \
 	${OBJECTDIR}/BateauCasePleine.o \
 	${OBJECTDIR}/Partie.o \
 	${OBJECTDIR}/Joueur.o \
-	${OBJECTDIR}/BateauCaseVide.o
+	${OBJECTDIR}/PorteAvions.o \
+	${OBJECTDIR}/BateauCaseVide.o \
+	${OBJECTDIR}/Croiseur.o
 
 
 # C Compiler Flags
@@ -94,6 +100,26 @@ ${OBJECTDIR}/main.o: main.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.cpp
 
+${OBJECTDIR}/JoueurPlateau.o: JoueurPlateau.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/JoueurPlateau.o JoueurPlateau.cpp
+
+${OBJECTDIR}/Historique.o: Historique.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/Historique.o Historique.cpp
+
+${OBJECTDIR}/Bonus.o: Bonus.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/Bonus.o Bonus.cpp
+
+${OBJECTDIR}/BonusManager.o: BonusManager.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/BonusManager.o BonusManager.cpp
+
 ${OBJECTDIR}/BateauCasePleine.o: BateauCasePleine.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
@@ -109,10 +135,20 @@ ${OBJECTDIR}/Joueur.o: Joueur.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/Joueur.o Joueur.cpp
 
+${OBJECTDIR}/PorteAvions.o: PorteAvions.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/PorteAvions.o PorteAvions.cpp
+
 ${OBJECTDIR}/BateauCaseVide.o: BateauCaseVide.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/BateauCaseVide.o BateauCaseVide.cpp
+
+${OBJECTDIR}/Croiseur.o: Croiseur.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/Croiseur.o Croiseur.cpp
 
 # Subprojects
 .build-subprojects:
