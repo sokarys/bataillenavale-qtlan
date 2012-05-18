@@ -1,6 +1,7 @@
 #ifndef PARTIE_H
 #define PARTIE_H
 
+#include "Variable.h"
 #include <vector>
 #include "Joueur.h"
 #include "JoueurPlateau.h"
@@ -12,7 +13,7 @@ class Partie
     public:
         Partie();
         virtual ~Partie();
-        void AddJoueur(Joueur* joueur);
+        void AddJoueur(Joueur& joueur);
         void DelJoueur(Joueur* joueur);
         void DelJoueur(int indexJoueur);
         void InitPartie();
