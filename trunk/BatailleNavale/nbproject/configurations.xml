@@ -8,10 +8,17 @@
       <itemPath>BateauCase.h</itemPath>
       <itemPath>BateauCasePleine.h</itemPath>
       <itemPath>BateauCaseVide.h</itemPath>
+      <itemPath>Bonus.h</itemPath>
+      <itemPath>BonusManager.h</itemPath>
       <itemPath>Controller.h</itemPath>
+      <itemPath>Croiseur.h</itemPath>
+      <itemPath>Historique.h</itemPath>
       <itemPath>Joueur.h</itemPath>
+      <itemPath>JoueurPlateau.h</itemPath>
       <itemPath>Partie.h</itemPath>
       <itemPath>Plateau.h</itemPath>
+      <itemPath>PorteAvions.h</itemPath>
+      <itemPath>Variable.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -24,10 +31,16 @@
       <itemPath>BateauCase.cpp</itemPath>
       <itemPath>BateauCasePleine.cpp</itemPath>
       <itemPath>BateauCaseVide.cpp</itemPath>
+      <itemPath>Bonus.cpp</itemPath>
+      <itemPath>BonusManager.cpp</itemPath>
       <itemPath>Controller.cpp</itemPath>
+      <itemPath>Croiseur.cpp</itemPath>
+      <itemPath>Historique.cpp</itemPath>
       <itemPath>Joueur.cpp</itemPath>
+      <itemPath>JoueurPlateau.cpp</itemPath>
       <itemPath>Partie.cpp</itemPath>
       <itemPath>Plateau.cpp</itemPath>
+      <itemPath>PorteAvions.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
