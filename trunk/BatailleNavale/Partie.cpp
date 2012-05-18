@@ -56,7 +56,16 @@ void Partie::InitPartie(){
  * Permet de passer au joueur suivant, change le joueur courant
  */
 void Partie::JoueurSuivant(){
-    
+     vector<JoueurPlateau*>::iterator it;
+    it = this->listeJoueur.begin();
+    while(it != this->listeJoueur.end()){
+        JoueurPlateau* jp = *it;
+        if(! jp->IsJoueurEqals(this->joueurCourant->GetJoueur())){
+            this->joueurCourant = jp;
+            break;
+        }
+        ++it;
+    }
 }
 /**
  * Permet au joueur courant de jouer une case
