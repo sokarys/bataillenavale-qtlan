@@ -7,7 +7,7 @@
 #include "BateauCasePleine.h"
 
 
-
+#include <iostream>
 #include <typeinfo>
 #include <vector>
 #include <string>
@@ -51,7 +51,10 @@ class Plateau
         
         int GetTailleX();
         int GetTailleY();
-
+        
+    protected:
+        bool CheckSetBateau(Bateau* b);
+        
     private:
         
         BateauCase*** plateau;
