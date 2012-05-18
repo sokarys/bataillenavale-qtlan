@@ -4,6 +4,7 @@
 #include "Variable.h"
 #include <vector>
 #include "Joueur.h"
+//#include "Plateau.h"
 #include "JoueurPlateau.h"
 
 using namespace std;
@@ -11,9 +12,9 @@ using namespace std;
 class Partie
 {
     public:
-        Partie();
+        Partie(int tailleX, int tailleY);
         virtual ~Partie();
-        void AddJoueur(Joueur& joueur);
+        void AddJoueur(Joueur* joueur);
         void DelJoueur(Joueur* joueur);
         void DelJoueur(int indexJoueur);
         void InitPartie();
@@ -27,6 +28,8 @@ class Partie
     protected:
         
     private:
+        int tailleX;
+        int tailleY;
         bool partieLance;
         int NbBateauMax;
         vector<JoueurPlateau*> listeJoueur;

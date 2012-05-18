@@ -4,8 +4,10 @@ using namespace std;
 /**
  * Constructeur
  */
-Partie::Partie()
+Partie::Partie(int tailleX, int tailleY)
 {
+    this->tailleX = tailleX;
+    this->tailleY = tailleY;
 }
 /**
  * Destructeur
@@ -17,12 +19,15 @@ Partie::~Partie()
  * Rajoute un joueur à la partie
  * @param joueur
  */
-void Partie::AddJoueur(Joueur& joueur){
+void Partie::AddJoueur(Joueur* joueur){
 
     if(this->listeJoueur.size() >= MAX_JOUEUR){
         return;
     }
-    //this->listeJoueur.push_back(joueur);
+    Plateau* plateau = new Plateau(this->tailleX, this->tailleY);
+    JoueurPlateau* jp = new JoueurPlateau(joueur,plateau);
+    this->listeJoueur.push_back(jp);
+    
 }
 /**
  * Supprime un joueur de la partie
