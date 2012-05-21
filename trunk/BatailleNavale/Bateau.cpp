@@ -39,14 +39,14 @@ void Bateau::SetEtat(ETAT_BATEAU etat){
     }
 }
 
-/** @brief GetBateauCase
-  *
-  * return the BateauCase which is in x, y. NULL else
-  */
-BateauCase* Bateau::GetBateauCase(int x, int y)
-{
-    return NULL;
-}
+///** @brief GetBateauCase
+//  *
+//  * return the BateauCase which is in x, y. NULL else
+//  */
+//BateauCase* Bateau::GetBateauCase(int x, int y)
+//{
+//    return NULL;
+//}
 
 /** @brief AddBateauCase
   *
@@ -97,9 +97,11 @@ BateauCase* Bateau::AddBateauCase(int x, int y)
   * 
   */
  void Bateau::CheckEtat(){
-     
+     if(this->listeBateauCase.size()==0){
+         return;
+     }
      for(int unsigned i=0;i<this->listeBateauCase.size();i++){
-         if(this->listeBateauCase[i]->GetEtat() == PAS_JOUEE){
+         if(this->listeBateauCase[i]->GetEtat() != TOUCHE){
              return;
          }
      } 

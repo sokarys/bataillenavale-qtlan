@@ -46,6 +46,9 @@ class Controller {
         bool IsPartieLancee();
         bool IsTousBateauxPlace_JoueurCourant();
         bool IsJoueurCourantAJoue();
+        bool LancerPartie();
+        
+        JoueurPlateau* GetJoueurCourant();
         
         //void AfficherPlateau(Plateau* p);
         //void AfficherPlateauAdversaire(Plateau* p);

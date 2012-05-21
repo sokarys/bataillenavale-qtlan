@@ -22,7 +22,14 @@ void InterfaceConsole::Run(){
     this->controller->InitPartie();
     cout << "Init de la partie" << endl;
     while(this->ChoixMenu()){
-        
+        Joueur* winner = this->controller->JoueurGagne();
+        cout << "WINER " << winner << endl;
+        if(winner != NULL){
+            winner->GetHistorique()->AddVictoire();
+            //TODO:Add loose to looser
+            cout << "Le joueur gagnant est " << winner->GetName();
+            break;
+        }
     }
     
 }
@@ -66,8 +73,10 @@ void InterfaceConsole::AfficherMenu(){
     cout << "2  - " << "Afficher_PlateauAdversaire_JoueurCourant" << endl;
     cout << "3  - " << "Afficher_PlateauPositionBateau_JoueurCourant" << endl;
     cout << "---------------------------------" << endl;
-    cout << "4  - " << "Jouer" << endl;
-    if(!this->controller->IsPartieLancee()){
+    if(!this->controller->IsJoueurCourantAJoue() && this->controller->IsPartieLancee()){
+        cout << "4  - " << "Jouer" << endl;
+    }
+    if(!this->controller->IsPartieLancee() && !this->controller->IsTousBateauxPlace_JoueurCourant()){
         cout << "5  - " << "Placer Bateau" << endl;
     }
     if(this->controller->IsTousBateauxPlace_JoueurCourant() && !this->controller->IsPartieLancee()){
@@ -76,6 +85,9 @@ void InterfaceConsole::AfficherMenu(){
     }else if(this->controller->IsJoueurCourantAJoue() && this->controller->IsPartieLancee()){
         cout << "---------------------------------" << endl;
         cout << "6  - " << "Joueur Suivant" << endl;
+    }
+    if(!this->controller->IsPartieLancee()){
+        cout << "7  - " << "Lancer Partie" << endl;
     }
     cout << "---------------------------------" << endl;
     cout << "9  - " << "Quitter" << endl;
@@ -142,9 +154,18 @@ bool InterfaceConsole::ChoixMenu(){
         case 6:
             if(this->controller->IsTousBateauxPlace_JoueurCourant() && !this->controller->IsPartieLancee()){
                 this->controller->JoueurSuivant();
+                cout << this->controller->GetJoueurCourant()->GetJoueur()->GetName() << " joue" << endl;
             }
             if(this->controller->IsJoueurCourantAJoue() && this->controller->IsPartieLancee()){
                 this->controller->JoueurSuivant();
+                 cout << this->controller->GetJoueurCourant()->GetJoueur()->GetName() << " joue" << endl;
+            }
+            break;
+        case 7:
+            if(this->controller->LancerPartie()){
+                cout << "Partie lancee" << endl;
+            }else{
+                cout << "il faut placer tous les bateaux" << endl;
             }
             break;
         case 9:

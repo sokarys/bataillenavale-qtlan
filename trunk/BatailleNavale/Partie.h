@@ -34,6 +34,8 @@ class Partie
         JoueurPlateau* GetAdversaire(JoueurPlateau* jp);
         bool IsPartieLancee();
         bool IsJoueurCourantAJoue();
+        
+        bool LancerPartie();
     protected:
         
     private:

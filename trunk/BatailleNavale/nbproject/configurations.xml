@@ -10,9 +10,12 @@
       <itemPath>BateauCaseVide.h</itemPath>
       <itemPath>Bonus.h</itemPath>
       <itemPath>BonusManager.h</itemPath>
+      <itemPath>ControlPlacementBateau.h</itemPath>
       <itemPath>Controller.h</itemPath>
       <itemPath>Croiseur.h</itemPath>
       <itemPath>Historique.h</itemPath>
+      <itemPath>Interface.h</itemPath>
+      <itemPath>InterfaceConsole.h</itemPath>
       <itemPath>Joueur.h</itemPath>
       <itemPath>JoueurPlateau.h</itemPath>
       <itemPath>Partie.h</itemPath>
@@ -33,9 +36,12 @@
       <itemPath>BateauCaseVide.cpp</itemPath>
       <itemPath>Bonus.cpp</itemPath>
       <itemPath>BonusManager.cpp</itemPath>
+      <itemPath>ControlPlacementBateau.cpp</itemPath>
       <itemPath>Controller.cpp</itemPath>
       <itemPath>Croiseur.cpp</itemPath>
       <itemPath>Historique.cpp</itemPath>
+      <itemPath>Interface.cpp</itemPath>
+      <itemPath>InterfaceConsole.cpp</itemPath>
       <itemPath>Joueur.cpp</itemPath>
       <itemPath>JoueurPlateau.cpp</itemPath>
       <itemPath>Partie.cpp</itemPath>
