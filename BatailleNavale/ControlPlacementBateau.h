@@ -13,11 +13,39 @@
 
 class ControlPlacementBateau {
 public:
+    /**
+     * Constructeur
+     * @param BateauAPlacer : tableau contenant un tableau avec le nombre
+     *  de bateau a placer. L'indice correspond a la taille du bateau
+     * @param tailleBateauMax taille max de la taille des bateaux
+     */
     ControlPlacementBateau(int* BateauAPlacer=NULL, int tailleBateauMax=MAX_TAILLE_BATEAU);
-    void AddBateauPlace(Bateau* b);
-    bool TousLesBateauxPlace();
-    int GetTaillePlacementBateauSuivant();
+    
+    /**
+     * Destrucuteur
+     */
     virtual ~ControlPlacementBateau();
+    
+    /**
+     * Fonction pour dire que le joueur a place le bateau de taille b
+     * @param b
+     */
+    void AddBateauPlace(Bateau* b);
+    
+    /**
+     * 
+     * @return true si tous les bateaux sont placés
+     */
+    bool TousLesBateauxPlace();
+    
+    /**
+     * 
+     * @return la taille du bateau suivant a placer sur le jeux
+     */
+    int GetTaillePlacementBateauSuivant();
+    
+    int* GetBateauRestanAPlacer();
+    
 private:
     int* BateauAPlacer;
     int* BateauPlace;

@@ -14,11 +14,11 @@ Partie::Partie(int tailleX, int tailleY, int* nombreTailleBateau, int tailleBate
         this->tailleBateauMax = 5;
         this->nombreTailleBateau = new int[6];
         this->nombreTailleBateau[0] = 0;
-        this->nombreTailleBateau[1] = 1;
-        this->nombreTailleBateau[2] = 0;
-        this->nombreTailleBateau[3] = 0;
-        this->nombreTailleBateau[4] = 0;
-        this->nombreTailleBateau[5] = 0;
+        this->nombreTailleBateau[1] = 0;
+        this->nombreTailleBateau[2] = 1;
+        this->nombreTailleBateau[3] = 2;
+        this->nombreTailleBateau[4] = 1;
+        this->nombreTailleBateau[5] = 1;
     }else{
         this->nombreTailleBateau = nombreTailleBateau;
     }
@@ -222,3 +222,8 @@ bool Partie::LancerPartie(){
     this->partieLance = true;
     return true;
 }
+
+int Partie::GetTailleBateauMax(){
+    return this->tailleBateauMax;
+}
+

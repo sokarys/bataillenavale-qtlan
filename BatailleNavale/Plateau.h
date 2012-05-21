@@ -62,6 +62,8 @@ class Plateau
         
         bool IsTousBateauxPlace();
         
+        int* GetBateauRestanAPlacer();
+        
     protected:
         bool CheckSetBateau(Bateau* b);
         

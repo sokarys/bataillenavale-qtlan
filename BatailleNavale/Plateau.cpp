@@ -233,3 +233,7 @@ bool Plateau::IsTousBateauxPlace(){
 int Plateau::GetTaillePlacementBateauSuivant(){
     return this->controlPlacementBateau->GetTaillePlacementBateauSuivant();
 }
+
+int* Plateau::GetBateauRestanAPlacer(){
+    return this->controlPlacementBateau->GetBateauRestanAPlacer();
+}

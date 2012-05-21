@@ -23,7 +23,6 @@ void InterfaceConsole::Run(){
     cout << "Init de la partie" << endl;
     while(this->ChoixMenu()){
         Joueur* winner = this->controller->JoueurGagne();
-        cout << "WINER " << winner << endl;
         if(winner != NULL){
             winner->GetHistorique()->AddVictoire();
             //TODO:Add loose to looser
@@ -95,17 +94,18 @@ void InterfaceConsole::AfficherMenu(){
         cout << "4  - " << "Jouer" << endl;
     }
     if(!this->controller->IsPartieLancee() && !this->controller->IsTousBateauxPlace_JoueurCourant()){
-        cout << "5  - " << "Placer Bateau" << endl;
+        cout << "5  - " << "Voir Bateau restant a placer" << endl;
+        cout << "6  - " << "Placer Bateau" << endl;
     }
     if(this->controller->IsTousBateauxPlace_JoueurCourant() && !this->controller->IsPartieLancee()){
         cout << "---------------------------------" << endl;
-        cout << "6  - " << "Joueur Suivant" << endl;
+        cout << "7  - " << "Joueur Suivant" << endl;
     }else if(this->controller->IsJoueurCourantAJoue() && this->controller->IsPartieLancee()){
         cout << "---------------------------------" << endl;
-        cout << "6  - " << "Joueur Suivant" << endl;
+        cout << "7  - " << "Joueur Suivant" << endl;
     }
     if(!this->controller->IsPartieLancee()){
-        cout << "7  - " << "Lancer Partie" << endl;
+        cout << "8  - " << "Lancer Partie" << endl;
     }
     cout << "---------------------------------" << endl;
     cout << "9  - " << "Quitter" << endl;
@@ -161,9 +161,12 @@ bool InterfaceConsole::ChoixMenu(){
     int choix = 0;
     int x=0,y=0, al=0, taille;
     bool b;
+    int* bateauRestant;
+    int tailleMax;
     ALLIGNEMENT align;
     cin >> choix;
     cin.clear();
+    this->Clear_screen();
     switch(choix){
         case 0:
             this->AfficherTout();
@@ -188,6 +191,19 @@ bool InterfaceConsole::ChoixMenu(){
             this->controller->Jouer_JoueurCourant(x,y);
             break;
         case 5:
+            if(!this->controller->IsTousBateauxPlace_JoueurCourant() && !this->controller->IsPartieLancee()){
+                bateauRestant = this->controller->GetJoueurCourant()->GetPlateau()->GetBateauRestanAPlacer();
+                tailleMax = this->controller->GetTailleBateauMax();
+                for(int i=0; i<=tailleMax; i++){
+                    if(bateauRestant[i]>0){
+                        cout << bateauRestant[i] << " bateau(x)" << " de taille " << i << endl;
+                    }
+                }
+            }else if(!this->controller->IsPartieLancee()){
+                cout << "Tous les bateaux sont places" << endl;
+            }
+            break;
+        case 6:
 //            cout << "Taille : ";
 //            cin >> taille;
 //            cin.clear();
@@ -216,7 +232,7 @@ bool InterfaceConsole::ChoixMenu(){
                 cout << "Error : Votre bateau n'a pas ete ajoute" << endl;
             }
             break;
-        case 6:
+        case 7:
             if(this->controller->IsTousBateauxPlace_JoueurCourant() && !this->controller->IsPartieLancee()){
                 this->JoueurSuivant();
             }
@@ -224,7 +240,7 @@ bool InterfaceConsole::ChoixMenu(){
                 this->JoueurSuivant();
             }
             break;
-        case 7:
+        case 8:
             if(this->controller->LancerPartie()){
                 cout << "C est a " << this->controller->GetJoueurCourant()->GetJoueur()->GetName() << " de jouer" << endl;
                 cout << "Partie lancee" << endl;
@@ -246,3 +262,12 @@ void InterfaceConsole::JoueurSuivant(){
     Interface::JoueurSuivant();
     cout << "C est a " << this->controller->GetJoueurCourant()->GetJoueur()->GetName() << " de jouer" << endl;
 }
+
+void InterfaceConsole::Clear_screen(){
+#ifndef __unix__
+  system("clear");
+#else
+  cout << "\033[H\033[2J";
+#endif
+}
+
