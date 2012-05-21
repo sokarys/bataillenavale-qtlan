@@ -160,6 +160,7 @@ bool InterfaceConsole::ChoixMenu(){
     this->AfficherMenu();
     int choix = 0;
     int x=0,y=0, al=0, taille;
+    bool b;
     ALLIGNEMENT align;
     cin >> choix;
     cin.clear();
@@ -208,7 +209,7 @@ bool InterfaceConsole::ChoixMenu(){
             cin.clear();
             align = (al == 0 ? HORIZONTAL : VERTICAL);
             cout << x << " " << y << al;
-            bool b = this->controller->PoserBateau_JoueurCourant(taille,x,y,align);
+            b = this->controller->PoserBateau_JoueurCourant(taille,x,y,align);
             if(b){
                 cout << "Succes : Votre bateau a ete ajoute avec succes" << endl;
             }else{
