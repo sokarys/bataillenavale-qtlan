@@ -264,7 +264,7 @@ void InterfaceConsole::JoueurSuivant(){
 }
 
 void InterfaceConsole::Clear_screen(){
-#ifndef __unix__
+#ifdef __unix__ 
   system("clear");
 #else
   cout << "\033[H\033[2J";
