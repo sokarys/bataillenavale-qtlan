@@ -39,6 +39,10 @@ void InterfaceConsole::Afficher_PlateauJoueur_JoueurCourant(){
     int tailleX = this->controller->GetTaillePlateauX();
     int tailleY = this->controller->GetTaillePlateauY();
     this->AfficherConsole(theStringTmp, tailleX, tailleY );
+    for(int i=0 ; i < this->controller->GetTaillePlateauX() ; i++){
+        delete[] theStringTmp[i];   
+    }
+    delete[] theStringTmp;
 }
 
 void InterfaceConsole::Afficher_PlateauAdversaire_JoueurCourant(){
@@ -46,6 +50,10 @@ void InterfaceConsole::Afficher_PlateauAdversaire_JoueurCourant(){
     int tailleX = this->controller->GetTaillePlateauX();
     int tailleY = this->controller->GetTaillePlateauY();
     this->AfficherConsole(theStringTmp, tailleX, tailleY );
+    for(int i=0 ; i < this->controller->GetTaillePlateauX() ; i++){
+        delete[] theStringTmp[i];   
+    }
+    delete[] theStringTmp;
 }
 
 void InterfaceConsole::Afficher_PlateauPositionBateau_JoueurCourant(){
@@ -53,12 +61,21 @@ void InterfaceConsole::Afficher_PlateauPositionBateau_JoueurCourant(){
     int tailleX = this->controller->GetTaillePlateauX();
     int tailleY = this->controller->GetTaillePlateauY();
     this->AfficherConsole(theStringTmp, tailleX, tailleY );
+    for(int i=0 ; i < this->controller->GetTaillePlateauX() ; i++){
+        delete[] theStringTmp[i];   
+    }
+    delete[] theStringTmp;
 }
 
 void InterfaceConsole::AfficherConsole(string** str, int taillex, int tailley){
-    cout << taillex << endl << tailley  << endl << "XXXXXXXXXXXXXXXXXXXXXXXXX" << endl;
     if(str != NULL){
+        cout << "X\\Y\t" ;
+        for(int y=0; y<tailley; y++){
+            cout << y << ".";
+        }
+        cout << endl;
         for(int x=0; x<taillex; x++){
+            cout << x << '\t';
             for(int y=0; y<tailley; y++){
                 cout << str[x][y] << ".";
             }
@@ -72,6 +89,7 @@ void InterfaceConsole::AfficherMenu(){
     cout << "1  - " << "Afficher_PlateauJoueur_JoueurCourant" << endl;
     cout << "2  - " << "Afficher_PlateauAdversaire_JoueurCourant" << endl;
     cout << "3  - " << "Afficher_PlateauPositionBateau_JoueurCourant" << endl;
+    cout << "0  - " << "Aficher tous les plateaux" << endl;
     cout << "---------------------------------" << endl;
     if(!this->controller->IsJoueurCourantAJoue() && this->controller->IsPartieLancee()){
         cout << "4  - " << "Jouer" << endl;
@@ -95,6 +113,49 @@ void InterfaceConsole::AfficherMenu(){
     
 }
 
+void InterfaceConsole::AfficherTout(){
+    string** platJ = this->controller->GetPlateauJoueur_JoueurCourant();
+    string** postBJ = this->controller->GetPlateauPositionBateau_JoueurCourant();
+    string** advJ = this->controller->GetPlateauAdversaire_JoueurCourant();
+    cout << "X\\Y\t";
+    for(int y=0; y<this->controller->GetTaillePlateauY(); y++){
+        cout << y << "." ;
+    }
+    cout << "\t";
+    for(int y=0; y<this->controller->GetTaillePlateauY(); y++){
+        cout << y << "." ;
+    }
+    cout << "\t";
+    for(int y=0; y<this->controller->GetTaillePlateauY(); y++){
+        cout << y << "." ;
+    }
+    cout << " " << endl;
+    for(int x=0; x<this->controller->GetTaillePlateauX(); x++){
+        cout << x << "\t";
+        for(int y=0; y<this->controller->GetTaillePlateauY(); y++){
+            cout << platJ[x][y] << ".";
+        }
+        cout << "\t";
+        for(int y=0; y<this->controller->GetTaillePlateauY(); y++){
+            cout << postBJ[x][y] << ".";    
+        }
+        cout << "\t";
+        for(int y=0; y<this->controller->GetTaillePlateauY(); y++){
+            cout << advJ[x][y] << ".";    
+        }
+        cout << "\n";
+    }
+    for(int i=0 ; i < this->controller->GetTaillePlateauX() ; i++){
+        delete[] platJ[i];    
+        delete[] postBJ[i];
+        delete[] advJ[i];
+    }
+        
+    delete[] platJ;
+    delete[] postBJ;
+    delete[] advJ;
+}
+
 bool InterfaceConsole::ChoixMenu(){
     this->AfficherMenu();
     int choix = 0;
@@ -103,6 +164,9 @@ bool InterfaceConsole::ChoixMenu(){
     cin >> choix;
     cin.clear();
     switch(choix){
+        case 0:
+            this->AfficherTout();
+            break;
         case 1:
             this->Afficher_PlateauJoueur_JoueurCourant();
             break;
@@ -133,13 +197,13 @@ bool InterfaceConsole::ChoixMenu(){
             }else{
                 cout << "Bateau de taille " << taille << " a placer" << endl;
             }
-            cout << "Position X : ";
+            cout << "Position X (|) : ";
             cin >> x;
-            cin.clear();
-            cout << "Position Y : ";
+            cin.clear(); 
+            cout << "Position Y (--): ";
             cin >> y;
             cin.clear();
-            cout << "Allig (-- : 0)( | : 1) : ";
+            cout << "Align (-- : 0)( | : 1) : ";
             cin >> al;
             cin.clear();
             align = (al == 0 ? HORIZONTAL : VERTICAL);
@@ -153,16 +217,15 @@ bool InterfaceConsole::ChoixMenu(){
             break;
         case 6:
             if(this->controller->IsTousBateauxPlace_JoueurCourant() && !this->controller->IsPartieLancee()){
-                this->controller->JoueurSuivant();
-                cout << this->controller->GetJoueurCourant()->GetJoueur()->GetName() << " joue" << endl;
+                this->JoueurSuivant();
             }
             if(this->controller->IsJoueurCourantAJoue() && this->controller->IsPartieLancee()){
-                this->controller->JoueurSuivant();
-                 cout << this->controller->GetJoueurCourant()->GetJoueur()->GetName() << " joue" << endl;
+                this->JoueurSuivant();
             }
             break;
         case 7:
             if(this->controller->LancerPartie()){
+                cout << "C est a " << this->controller->GetJoueurCourant()->GetJoueur()->GetName() << " de jouer" << endl;
                 cout << "Partie lancee" << endl;
             }else{
                 cout << "il faut placer tous les bateaux" << endl;
@@ -171,15 +234,14 @@ bool InterfaceConsole::ChoixMenu(){
         case 9:
             return false;
         default:
-            if (cin.fail()) 
-            {
-                cout << "\ncin failed - substituting: i=1;\n\n";
-                choix = 0;
-            }
-            cin.clear(); cin.ignore(INT_MAX,'\n'); 
             this->AfficherMenu();
             break;
     };
-    cin.clear();
+    cin.clear(); cin.ignore(INT_MAX,'\n');
     return true;
+}
+
+void InterfaceConsole::JoueurSuivant(){
+    Interface::JoueurSuivant();
+    cout << "C est a " << this->controller->GetJoueurCourant()->GetJoueur()->GetName() << " de jouer" << endl;
 }

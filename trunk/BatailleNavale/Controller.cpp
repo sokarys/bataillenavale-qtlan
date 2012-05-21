@@ -101,7 +101,9 @@ bool Controller::LancerPartie(){
 }
 
 JoueurPlateau* Controller::GetJoueurCourant(){
+#if DEBUG
     cout << "Cour " << this->partie->GetJoueurCourant()->GetJoueur()->GetName() << endl;
     cout << "adv " << this->partie->GetAdversaire(this->partie->GetJoueurCourant())->GetJoueur()->GetName() << endl;
+#endif
     return this->partie->GetJoueurCourant();
 }

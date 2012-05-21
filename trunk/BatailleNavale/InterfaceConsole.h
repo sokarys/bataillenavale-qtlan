@@ -38,6 +38,7 @@ class InterfaceConsole : public Interface{
        void AfficherConsole(string** str, int taillex, int tailley);
        void AfficherMenu();
        bool ChoixMenu();
+       void AfficherTout();
 };
 
 #endif	/* INTERFACECONSOLE_H */

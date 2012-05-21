@@ -93,12 +93,10 @@ int Plateau::GetTailleX(){
 }
 
 bool Plateau::IsAllBateauCoule(){
-    cout << "nb bateau "<< this->listeBateau.size() << endl;
     if(this->listeBateau.size()==0){
          return false;
      }
     for(int unsigned i=0; i<this->listeBateau.size(); i++){
-        cout << "bateau etat"<< this->listeBateau[i]->GetEtat() << endl;
         if(this->listeBateau[i]->GetEtat() == PAS_COULE){
             return false;
         }

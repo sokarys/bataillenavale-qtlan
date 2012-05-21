@@ -13,7 +13,6 @@ ControlPlacementBateau::ControlPlacementBateau(int* bateauAPlacer, int tailleBat
     this->tailleBateauMax=tailleBateauMax;
     this->BateauAPlacer = new int[tailleBateauMax+1];
     this->BateauPlace = new int[tailleBateauMax+1];
-//    cout << "BB"  << endl << bateauAPlacer << endl << tailleBateauMax;
     for(int i = 0; i<=tailleBateauMax; i++){
         this->BateauAPlacer[i] = bateauAPlacer[i];
         this->BateauPlace[i] = bateauAPlacer[i];
