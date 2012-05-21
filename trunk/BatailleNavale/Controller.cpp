@@ -107,3 +107,7 @@ JoueurPlateau* Controller::GetJoueurCourant(){
 #endif
     return this->partie->GetJoueurCourant();
 }
+
+int Controller::GetTailleBateauMax(){
+    return this->partie->GetTailleBateauMax();
+}

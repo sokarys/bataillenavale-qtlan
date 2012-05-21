@@ -49,3 +49,6 @@ int ControlPlacementBateau::GetTaillePlacementBateauSuivant(){
 ControlPlacementBateau::~ControlPlacementBateau() {
 }
 
+int* ControlPlacementBateau::GetBateauRestanAPlacer(){
+    return this->BateauPlace;
+}

@@ -36,6 +36,7 @@ class Partie
         bool IsJoueurCourantAJoue();
         
         bool LancerPartie();
+        int GetTailleBateauMax();
     protected:
         
     private:

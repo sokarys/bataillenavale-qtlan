@@ -13,6 +13,7 @@
 #include "Joueur.h"
 #include "Controller.h"
 
+#include <cstdlib>
 #include <iostream>
 #include <string>
 
@@ -39,6 +40,7 @@ class InterfaceConsole : public Interface{
        void AfficherMenu();
        bool ChoixMenu();
        void AfficherTout();
+       void Clear_screen();
 };
 
 #endif	/* INTERFACECONSOLE_H */
