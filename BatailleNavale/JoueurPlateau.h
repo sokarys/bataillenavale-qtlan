@@ -21,6 +21,8 @@ class JoueurPlateau {
         Plateau* GetPlateau();
         
         bool IsJoueurEqals(Joueur* j);
+        
+        bool IsTousLesBateauxPlaces();
     private:
         Joueur* joueur;
         Plateau* plateau;

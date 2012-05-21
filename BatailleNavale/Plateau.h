@@ -7,6 +7,7 @@
 #include "BateauCase.h"
 #include "BateauCaseVide.h"
 #include "BateauCasePleine.h"
+#include "ControlPlacementBateau.h"
 
 
 #include <iostream>
@@ -24,7 +25,7 @@ class Plateau
 {
     public:
         /*Constructeur*/
-        Plateau(int tailleX, int tailleY);
+        Plateau(int tailleX, int tailleY, int* TailleBateau, int tailleBateauMax=MAX_TAILLE_BATEAU);
 //        virtual ~Plateau(){};
 
         /*permet de placer un bateau sur le plateau en x,y, avec le bon allignement,
@@ -41,10 +42,12 @@ class Plateau
         string** GetPlateauAdversaire();
         
         /*retourn un tableau de string representant le plateau des bateau que le joueur a pose*/
-        string** GetPlateauJoueur();
+        string** GetPlateauBateauJoueur();
         
         /*Permet de jouer sur la case x,y*/
         void JouerBateauCase(int x, int y);
+        
+        bool IsBateauCasePleine(int x, int y);
         
         /*renvoie true si tous les bateaux du plateau sont coule*/
         bool IsAllBateauCoule();
@@ -52,8 +55,12 @@ class Plateau
         /*Getter and Setter*/
         vector<Bateau*> GetListeBateau();
         
+        int GetTaillePlacementBateauSuivant();
+        
         int GetTailleX();
         int GetTailleY();
+        
+        bool IsTousBateauxPlace();
         
     protected:
         bool CheckSetBateau(Bateau* b);
@@ -64,6 +71,7 @@ class Plateau
         int tailleY;
         int tailleX;
         vector<Bateau*> listeBateau;
+        ControlPlacementBateau* controlPlacementBateau;
 };
 
 #endif // PLATEAU_H

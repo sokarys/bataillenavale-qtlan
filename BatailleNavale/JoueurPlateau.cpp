@@ -27,3 +27,8 @@ Plateau* JoueurPlateau::GetPlateau(){
 bool JoueurPlateau::IsJoueurEqals(Joueur* j){
      return this->joueur->IsEgal(*j);
 }
+
+bool JoueurPlateau::IsTousLesBateauxPlaces(){
+    return this->GetPlateau()->IsTousBateauxPlace();
+}
+

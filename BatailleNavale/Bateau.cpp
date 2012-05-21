@@ -105,3 +105,8 @@ BateauCase* Bateau::AddBateauCase(int x, int y)
      } 
      this->SetEtat(COULE);
  }
+
+ 
+ALLIGNEMENT Bateau::GetAllignement(){
+     return this->alignement;
+}

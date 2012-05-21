@@ -9,37 +9,89 @@
 
 using namespace std;
 
-Controller::Controller() {
+Controller::Controller(Partie* partie) {
+    this->interface = new InterfaceConsole(this);
+    this->partie = partie;
 }
 
 
 Controller::~Controller() {
+    delete interface;
+    delete partie;
 }
 
-void Controller::AfficherPlateauAdversaire(Plateau* p){
-    if(p != NULL){
-        int taillex = p->GetTailleX();
-        int tailley = p->GetTailleY();
-        for(int x=0; x<taillex; x++){
-            for(int y=0; y<tailley; y++){
-                BateauCase *b = p->GetBateauCase(x,y);
-                cout << b->GetRepresentationAdversaire();
-            }
-            cout << endl;
-        }
-    }
+void Controller::Run(){
+    this->interface->Run();
 }
 
-void Controller::AfficherPlateau(Plateau* p){
-    if(p != NULL){
-        int taillex = p->GetTailleX();
-        int tailley = p->GetTailleY();
-        for(int x=0; x<taillex; x++){
-            for(int y=0; y<tailley; y++){
-                BateauCase *b = p->GetBateauCase(x,y);
-                cout << *b;
-            }
-            cout << endl;
-        }
+void Controller::InitPartie(){
+    this->partie->InitPartie();
+}
+
+string** Controller::GetPlateauJoueur_JoueurCourant(){
+    return this->partie->JoueurPlateauJoue(this->partie->GetJoueurCourant());
+}
+
+string** Controller::GetPlateauAdversaire_JoueurCourant(){
+    return this->partie->JoueurPlateauAdversaire(this->partie->GetJoueurCourant());
+}
+
+string** Controller::GetPlateauPositionBateau_JoueurCourant(){
+    return this->partie->JoueurPlateauPlacementBateau(this->partie->GetJoueurCourant());
+}
+
+void Controller::JoueurSuivant(){
+    this->partie->JoueurSuivant();
+}
+
+bool Controller::Jouer_JoueurCourant(int x, int y){
+    if(this->partie->GetJoueurCourant() == NULL){
+        throw new string("Joueur NULL PoserBateau_JoueurCourant");
+        return false;
     }
+    return this->partie->JoueurCourantJoue(x,y);
+}
+
+bool Controller::PoserBateau_JoueurCourant(int taille, int x, int y, ALLIGNEMENT align){
+    if(this->partie->GetJoueurCourant() == NULL){
+        throw new string("Joueur NULL PoserBateau_JoueurCourant");
+        return false;
+    }
+    return this->partie->GetJoueurCourant()->GetPlateau()->SetBateau(taille,x,y,align);
+}
+
+Joueur* Controller::JoueurGagne(){
+    return NULL;
+}
+
+int Controller::GetTaillePlateauX(){
+    return this->partie->GetTaillePlateauX();
+}
+
+int Controller::GetTaillePlateauY(){
+    return this->partie->GetTaillePlateauY();
+}
+        
+bool Controller::AddJoueur(Joueur* j){
+    return this->partie->AddJoueur(j);
+}
+
+bool Controller::IsPartieLancee(){
+    return this->partie->IsPartieLancee();
+}
+
+bool Controller::IsTousBateauxPlace_JoueurCourant(){
+    if(this->partie->GetJoueurCourant() == NULL){
+        throw new string("Joueur NULL PoserBateau_JoueurCourant");
+        return false;
+    }
+    return this->partie->GetJoueurCourant()->IsTousLesBateauxPlaces();
+}
+
+bool Controller::IsJoueurCourantAJoue(){
+    return this->partie->IsJoueurCourantAJoue();
+}
+
+int Controller::GetTaillePlacementBateauSuivant_JoueurCourant(){
+    return this->partie->GetJoueurCourant()->GetPlateau()->GetTaillePlacementBateauSuivant();
 }
