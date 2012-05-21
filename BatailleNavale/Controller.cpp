@@ -61,7 +61,7 @@ bool Controller::PoserBateau_JoueurCourant(int taille, int x, int y, ALLIGNEMENT
 }
 
 Joueur* Controller::JoueurGagne(){
-    return NULL;
+    return this->partie->GetGagnant();
 }
 
 int Controller::GetTaillePlateauX(){
@@ -94,4 +94,14 @@ bool Controller::IsJoueurCourantAJoue(){
 
 int Controller::GetTaillePlacementBateauSuivant_JoueurCourant(){
     return this->partie->GetJoueurCourant()->GetPlateau()->GetTaillePlacementBateauSuivant();
+}
+
+bool Controller::LancerPartie(){
+    this->partie->LancerPartie();
+}
+
+JoueurPlateau* Controller::GetJoueurCourant(){
+    cout << "Cour " << this->partie->GetJoueurCourant()->GetJoueur()->GetName() << endl;
+    cout << "adv " << this->partie->GetAdversaire(this->partie->GetJoueurCourant())->GetJoueur()->GetName() << endl;
+    return this->partie->GetJoueurCourant();
 }

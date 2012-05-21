@@ -37,6 +37,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/Controller.o \
 	${OBJECTDIR}/BateauCase.o \
 	${OBJECTDIR}/Plateau.o \
+	${OBJECTDIR}/InterfaceConsole.o \
 	${OBJECTDIR}/Bateau.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/JoueurPlateau.o \
@@ -44,10 +45,12 @@ OBJECTFILES= \
 	${OBJECTDIR}/Bonus.o \
 	${OBJECTDIR}/BonusManager.o \
 	${OBJECTDIR}/BateauCasePleine.o \
+	${OBJECTDIR}/Interface.o \
 	${OBJECTDIR}/Partie.o \
 	${OBJECTDIR}/Joueur.o \
 	${OBJECTDIR}/PorteAvions.o \
 	${OBJECTDIR}/BateauCaseVide.o \
+	${OBJECTDIR}/ControlPlacementBateau.o \
 	${OBJECTDIR}/Croiseur.o
 
 
@@ -90,6 +93,11 @@ ${OBJECTDIR}/Plateau.o: Plateau.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/Plateau.o Plateau.cpp
 
+${OBJECTDIR}/InterfaceConsole.o: InterfaceConsole.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/InterfaceConsole.o InterfaceConsole.cpp
+
 ${OBJECTDIR}/Bateau.o: Bateau.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
@@ -125,6 +133,11 @@ ${OBJECTDIR}/BateauCasePleine.o: BateauCasePleine.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/BateauCasePleine.o BateauCasePleine.cpp
 
+${OBJECTDIR}/Interface.o: Interface.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/Interface.o Interface.cpp
+
 ${OBJECTDIR}/Partie.o: Partie.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
@@ -144,6 +157,11 @@ ${OBJECTDIR}/BateauCaseVide.o: BateauCaseVide.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/BateauCaseVide.o BateauCaseVide.cpp
+
+${OBJECTDIR}/ControlPlacementBateau.o: ControlPlacementBateau.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/ControlPlacementBateau.o ControlPlacementBateau.cpp
 
 ${OBJECTDIR}/Croiseur.o: Croiseur.cpp 
 	${MKDIR} -p ${OBJECTDIR}

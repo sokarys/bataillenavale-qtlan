@@ -22,3 +22,15 @@ bool Joueur::IsEgal(Joueur const& j) const{
 bool operator==(Joueur const& j1, Joueur const& j2){
     return j1.IsEgal(j2);
 }
+
+string Joueur::GetName(){
+    return this->name;
+}
+
+string Joueur::GetPassword(){
+    return this->password;
+}
+
+Historique* Joueur::GetHistorique(){
+    return this->historique;
+}

@@ -15,11 +15,11 @@ Partie::Partie(int tailleX, int tailleY, int* nombreTailleBateau, int tailleBate
         this->tailleBateauMax = 5;
         this->nombreTailleBateau = new int[6];
         this->nombreTailleBateau[0] = 0;
-        this->nombreTailleBateau[1] = 0;
-        this->nombreTailleBateau[2] = 1;
-        this->nombreTailleBateau[3] = 2;
-        this->nombreTailleBateau[4] = 1;
-        this->nombreTailleBateau[5] = 1;
+        this->nombreTailleBateau[1] = 1;
+        this->nombreTailleBateau[2] = 0;
+        this->nombreTailleBateau[3] = 0;
+        this->nombreTailleBateau[4] = 0;
+        this->nombreTailleBateau[5] = 0;
     }else{
         this->nombreTailleBateau = nombreTailleBateau;
     }
@@ -73,7 +73,7 @@ void Partie::InitPartie(){
  * Permet de passer au joueur suivant, change le joueur courant
  */
 void Partie::JoueurSuivant(){
-     vector<JoueurPlateau*>::iterator it;
+    vector<JoueurPlateau*>::iterator it;
     it = this->listeJoueur.begin();
     while(it != this->listeJoueur.end()){
         JoueurPlateau* jp = *it;
@@ -92,7 +92,10 @@ void Partie::JoueurSuivant(){
  * @return bool : return true si le joueur joue dans une case valide
  */
 bool Partie::JoueurCourantJoue(int x, int y){
-    this->joueurCourantAjoue = true;
+    bool joue = this->GetAdversaire(this->GetJoueurCourant())->GetPlateau()->JouerBateauCase(x,y);
+    this->joueurCourantAjoue = joue;
+    return joue;
+    
 }
 /**
  * Permet de renvoyer un tab de string pour le joueur j
@@ -125,6 +128,8 @@ string** Partie::JoueurPlateauJoue(JoueurPlateau* j){
     if(j == NULL){
         return NULL;
     }
+    cout << j->GetJoueur()->GetName() << endl;
+    cout << this->GetAdversaire(j)->GetJoueur()->GetName() << endl;
     return this->GetAdversaire(j)->GetPlateau()->GetPlateauAdversaire();
 }
 /**
@@ -132,6 +137,20 @@ string** Partie::JoueurPlateauJoue(JoueurPlateau* j){
  * @return le joueur gagnant, Null si il y en a pas
  */
 Joueur* Partie::GetGagnant(){
+    cout << "PARTIE LANCEE" << this->partieLance << endl;
+    if(!this->partieLance){
+        return NULL;
+    }
+    vector<JoueurPlateau*>::iterator it;
+    it = this->listeJoueur.begin();
+    while(it != this->listeJoueur.end()){
+        JoueurPlateau* jp = *it;
+        cout << "bateau coule : "<<jp->GetJoueur()->GetName() << " " << jp->GetPlateau()->IsAllBateauCoule() << endl;
+        if(jp->GetPlateau()->IsAllBateauCoule()){
+            return this->GetAdversaire(jp)->GetJoueur();
+        }
+        ++it;
+    }
     return NULL;
 }
 
@@ -185,3 +204,16 @@ bool Partie::IsJoueurCourantAJoue(){
     return this->joueurCourantAjoue;
 }
 
+bool Partie::LancerPartie(){
+    vector<JoueurPlateau*>::iterator it;
+    it = this->listeJoueur.begin();
+    while(it != this->listeJoueur.end()){
+        JoueurPlateau* jp = *it;
+        if(!jp->IsTousLesBateauxPlaces()){
+            return false;
+        }
+        ++it;
+    }
+    this->partieLance = true;
+    return true;
+}

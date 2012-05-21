@@ -48,6 +48,7 @@ bool Plateau::SetBateau(int taille, int x, int y, ALLIGNEMENT a){
                 this->plateau[x][ytmp] = btmp->AddBateauCase(x,ytmp); 
             }
             this->controlPlacementBateau->AddBateauPlace(btmp);
+            this->listeBateau.push_back(btmp);
             return true;
         }
     }else if(a == VERTICAL){
@@ -61,6 +62,7 @@ bool Plateau::SetBateau(int taille, int x, int y, ALLIGNEMENT a){
                 this->plateau[xtmp][y] = btmp->AddBateauCase(xtmp,y); 
             }
             this->controlPlacementBateau->AddBateauPlace(btmp);
+            this->listeBateau.push_back(btmp);
             return true;
         }
     }
@@ -91,7 +93,12 @@ int Plateau::GetTailleX(){
 }
 
 bool Plateau::IsAllBateauCoule(){
+    cout << "nb bateau "<< this->listeBateau.size() << endl;
+    if(this->listeBateau.size()==0){
+         return false;
+     }
     for(int unsigned i=0; i<this->listeBateau.size(); i++){
+        cout << "bateau etat"<< this->listeBateau[i]->GetEtat() << endl;
         if(this->listeBateau[i]->GetEtat() == PAS_COULE){
             return false;
         }
@@ -158,16 +165,22 @@ string** Plateau::GetPlateauBateauJoueur(){
  * @param x
  * @param y
  */
-void Plateau::JouerBateauCase(int x, int y){
+bool Plateau::JouerBateauCase(int x, int y){
     BateauCasePleine* bateauCase;
     BateauCaseVide* bateauCaseV;
+    if(x<0 || y<0 || x>=this->GetTailleX() || y>=this->GetTailleY()){
+        return false;
+    }
     BateauCase* theBC = this->plateau[x][y];
-   
+    if(theBC->GetEtat() != PAS_JOUEE){
+        return false;
+    }
     if(bateauCase = (dynamic_cast<BateauCasePleine*>(theBC))){
        bateauCase->SetEtat(TOUCHE);
     }else if(bateauCaseV = (dynamic_cast<BateauCaseVide*>(theBC))){
        bateauCaseV->SetEtat(EAU);
     }
+    return true;
 }
 
 bool Plateau::IsBateauCasePleine(int x, int y){

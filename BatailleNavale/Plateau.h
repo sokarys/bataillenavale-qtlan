@@ -45,7 +45,7 @@ class Plateau
         string** GetPlateauBateauJoueur();
         
         /*Permet de jouer sur la case x,y*/
-        void JouerBateauCase(int x, int y);
+        bool JouerBateauCase(int x, int y);
         
         bool IsBateauCasePleine(int x, int y);
         

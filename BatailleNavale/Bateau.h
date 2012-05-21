@@ -14,7 +14,7 @@ class Bateau
         Bateau(int x, int y, ALLIGNEMENT align, int taille, string name="NoName");
         ~Bateau();
         BateauCase* AddBateauCase(int x, int y);
-        BateauCase* GetBateauCase(int x, int y);
+//        BateauCase* GetBateauCase(int x, int y);
         void CheckEtat();
         ETAT_BATEAU GetEtat();
         void SetEtat(ETAT_BATEAU etat);
