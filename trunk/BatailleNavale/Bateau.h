@@ -21,6 +21,7 @@ class Bateau
         int GetX();
         int GetY();
         int GetTaille();
+        ALLIGNEMENT GetAllignement();
         string GetName();
         
     protected:
