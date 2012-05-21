@@ -15,7 +15,7 @@ class BateauCaseVide : public BateauCase {
     public:
         BateauCaseVide(int x, int y);
         ~BateauCaseVide();
-        string GetRepresentation();
+//        string GetRepresentation();
 
 };
 

@@ -10,7 +10,6 @@ Partie::Partie(int tailleX, int tailleY, int* nombreTailleBateau, int tailleBate
     this->tailleY = tailleY;
     this->joueurCourantAjoue = false;
     this->tailleBateauMax = tailleBateauMax;
-    cout << nombreTailleBateau << tailleBateauMax;
     if(nombreTailleBateau == NULL){
         this->tailleBateauMax = 5;
         this->nombreTailleBateau = new int[6];
@@ -64,7 +63,7 @@ void Partie::DelJoueur(Joueur* joueur){
 }
 /**
  * Initialise la partie :
- * Crés les plateaux, met l'état des joueurs en partie, etc..
+ * Crés les plateaux, met l'état des joueurs en partie, mise en place des bonus..
  */
 void Partie::InitPartie(){
     
@@ -128,8 +127,10 @@ string** Partie::JoueurPlateauJoue(JoueurPlateau* j){
     if(j == NULL){
         return NULL;
     }
+#if DEBUG
     cout << j->GetJoueur()->GetName() << endl;
     cout << this->GetAdversaire(j)->GetJoueur()->GetName() << endl;
+#endif
     return this->GetAdversaire(j)->GetPlateau()->GetPlateauAdversaire();
 }
 /**
@@ -137,7 +138,9 @@ string** Partie::JoueurPlateauJoue(JoueurPlateau* j){
  * @return le joueur gagnant, Null si il y en a pas
  */
 Joueur* Partie::GetGagnant(){
+#if DEBUG
     cout << "PARTIE LANCEE" << this->partieLance << endl;
+#endif
     if(!this->partieLance){
         return NULL;
     }
@@ -145,7 +148,9 @@ Joueur* Partie::GetGagnant(){
     it = this->listeJoueur.begin();
     while(it != this->listeJoueur.end()){
         JoueurPlateau* jp = *it;
+#if DEBUG
         cout << "bateau coule : "<<jp->GetJoueur()->GetName() << " " << jp->GetPlateau()->IsAllBateauCoule() << endl;
+#endif
         if(jp->GetPlateau()->IsAllBateauCoule()){
             return this->GetAdversaire(jp)->GetJoueur();
         }

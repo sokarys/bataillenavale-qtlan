@@ -13,8 +13,8 @@ BateauCaseVide::BateauCaseVide(int x, int y) : BateauCase(x,y){
     
 }
 
-string BateauCaseVide::GetRepresentation(){
-    return "0";
-}
+//string BateauCaseVide::GetRepresentation(){
+//    return REP_EAU;
+//}
 
 
