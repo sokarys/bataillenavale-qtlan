@@ -70,13 +70,13 @@ void InterfaceConsole::AfficherConsole(string** str, int taillex, int tailley){
     if(str != NULL){
         cout << "X\\Y\t" ;
         for(int y=0; y<tailley; y++){
-            cout << y << ".";
+            cout << y << REP_SEPARATION;
         }
         cout << endl;
         for(int x=0; x<taillex; x++){
             cout << x << '\t';
             for(int y=0; y<tailley; y++){
-                cout << str[x][y] << ".";
+                cout << str[x][y] << REP_SEPARATION;
             }
             cout << endl;
         }
@@ -119,29 +119,29 @@ void InterfaceConsole::AfficherTout(){
     string** advJ = this->controller->GetPlateauAdversaire_JoueurCourant();
     cout << "X\\Y\t";
     for(int y=0; y<this->controller->GetTaillePlateauY(); y++){
-        cout << y << "." ;
+        cout << y << " " ;
     }
     cout << "\t";
     for(int y=0; y<this->controller->GetTaillePlateauY(); y++){
-        cout << y << "." ;
+        cout << y << " " ;
     }
     cout << "\t";
     for(int y=0; y<this->controller->GetTaillePlateauY(); y++){
-        cout << y << "." ;
+        cout << y << " " ;
     }
     cout << " " << endl;
     for(int x=0; x<this->controller->GetTaillePlateauX(); x++){
         cout << x << "\t";
         for(int y=0; y<this->controller->GetTaillePlateauY(); y++){
-            cout << platJ[x][y] << ".";
+            cout << platJ[x][y] << REP_SEPARATION;
         }
         cout << "\t";
         for(int y=0; y<this->controller->GetTaillePlateauY(); y++){
-            cout << postBJ[x][y] << ".";    
+            cout << postBJ[x][y] << REP_SEPARATION;    
         }
         cout << "\t";
         for(int y=0; y<this->controller->GetTaillePlateauY(); y++){
-            cout << advJ[x][y] << ".";    
+            cout << advJ[x][y] << REP_SEPARATION;    
         }
         cout << "\n";
     }
