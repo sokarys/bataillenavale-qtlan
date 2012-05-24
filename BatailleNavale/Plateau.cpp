@@ -1,4 +1,5 @@
 #include "Plateau.h"
+//#include "BateauCaseBonus.h"
 
 
 using namespace std;
@@ -163,9 +164,10 @@ string** Plateau::GetPlateauBateauJoueur(){
  * @param x
  * @param y
  */
-bool Plateau::JouerBateauCase(int x, int y){
+bool Plateau::JouerBateauCase(int x, int y, BonusManager* bonusManager){
     BateauCasePleine* bateauCase;
     BateauCaseVide* bateauCaseV;
+    BateauCaseBonus* bateauCaseBonus;
     if(x<0 || y<0 || x>=this->GetTailleX() || y>=this->GetTailleY()){
         return false;
     }
@@ -177,6 +179,11 @@ bool Plateau::JouerBateauCase(int x, int y){
        bateauCase->SetEtat(TOUCHE);
     }else if(bateauCaseV = (dynamic_cast<BateauCaseVide*>(theBC))){
        bateauCaseV->SetEtat(EAU);
+    }else if(bateauCaseBonus = (dynamic_cast<BateauCaseBonus*>(theBC))){
+       bateauCaseBonus->SetEtat(EAU);
+       if(bonusManager != NULL){
+           bonusManager->AddBonus(bateauCaseBonus->GetBonus());
+       }
     }
     return true;
 }

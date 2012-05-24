@@ -13,6 +13,7 @@
 #include "Plateau.h"
 #include "Variable.h"
 
+class Plateau;
 using namespace std;
 
 class Bonus {
@@ -39,7 +40,7 @@ class Bonus {
          * @param align optionnel en fonction du bonus utilise
          * @return 
          */
-        virtual bool lancerBonus(Plateau* p, int cibleX, int cibleY, ALLIGNEMENT align = RIEN){return false;};
+        virtual bool lancerBonus(Plateau* p, int cibleX, int cibleY, ALLIGNEMENT align = RIEN);
     private:
         string name;
         bool finDuTour;

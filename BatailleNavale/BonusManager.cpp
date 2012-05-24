@@ -14,3 +14,15 @@ BonusManager::BonusManager() {
 BonusManager::~BonusManager() {
 }
 
+void BonusManager::AddBonus(Bonus* b){
+    
+}
+
+bool BonusManager::LancerBonus(Bonus* b, Plateau* p, int x, int y, ALLIGNEMENT alig){
+    return false;
+}
+
+void BonusManager::DelBonus(Bonus* b){
+    
+    
+}

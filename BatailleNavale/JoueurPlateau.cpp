@@ -32,3 +32,7 @@ bool JoueurPlateau::IsTousLesBateauxPlaces(){
     return this->GetPlateau()->IsTousBateauxPlace();
 }
 
+ BonusManager* JoueurPlateau::GetBonusManager(){
+     return this->bonusManager;
+ }
+ 

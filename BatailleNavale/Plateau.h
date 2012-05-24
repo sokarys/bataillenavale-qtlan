@@ -1,14 +1,19 @@
 #ifndef PLATEAU_H
 #define PLATEAU_H
 
-//#include "Bonus.h"
+#include "Bonus.h"
+#include "BonusManager.h"
 #include "Variable.h"
 #include "Bateau.h"
 #include "BateauCase.h"
 #include "BateauCaseVide.h"
 #include "BateauCasePleine.h"
+#include "BateauCaseBonus.h"
 #include "ControlPlacementBateau.h"
+#include "ControlPlacementBonus.h"
 
+
+class BonusManager;
 
 #include <iostream>
 #include <typeinfo>
@@ -45,7 +50,7 @@ class Plateau
         string** GetPlateauBateauJoueur();
         
         /*Permet de jouer sur la case x,y*/
-        bool JouerBateauCase(int x, int y);
+        bool JouerBateauCase(int x, int y, BonusManager* bonusManager);
         
         bool IsBateauCasePleine(int x, int y);
         
@@ -55,17 +60,51 @@ class Plateau
         /*Getter and Setter*/
         vector<Bateau*> GetListeBateau();
         
+        /**
+         * 
+         * @return la taille du bateau suivant a placer
+         */
         int GetTaillePlacementBateauSuivant();
         
+        /**
+         * 
+         * @return la taille en X du plateau (ligne)
+         */
         int GetTailleX();
+        
+        /**
+         * 
+         * @return la taille en y du plateau (colonne)
+         */
         int GetTailleY();
         
+        /**
+         * 
+         * @return true si tous les bateaux ont ete positione
+         */
         bool IsTousBateauxPlace();
         
+        /**
+         * 
+         * @return un tableau contenant le nombre des bateaux restant a place,
+         * l'indice correspond a la taille du bateau
+         */
         int* GetBateauRestanAPlacer();
         
     protected:
+        /**
+         * Permet de savoir si le bateau peut etre place
+         * @param b
+         * @return true si le bateau peut etre place sur le plateau a
+         *  l'emplacement désiree
+         */
         bool CheckSetBateau(Bateau* b);
+        
+        /**
+         * Permet de placer les bonus sur le plateau
+         * @TODO:MUST BE IMPROVED
+         */
+        void PlacerBonusSurPlateau();
         
     private:
         
@@ -74,6 +113,7 @@ class Plateau
         int tailleX;
         vector<Bateau*> listeBateau;
         ControlPlacementBateau* controlPlacementBateau;
+        ControlPlacementBonus* controlBonus;
 };
 
 #endif // PLATEAU_H

@@ -80,7 +80,7 @@ void Partie::JoueurSuivant(){
  * @return bool : return true si le joueur joue dans une case valide
  */
 bool Partie::JoueurCourantJoue(int x, int y){
-    bool joue = this->GetAdversaire(this->GetJoueurCourant())->GetPlateau()->JouerBateauCase(x,y);
+    bool joue = this->GetAdversaire(this->GetJoueurCourant())->GetPlateau()->JouerBateauCase(x,y, this->GetJoueurCourant()->GetBonusManager());
     this->joueurCourantAjoue = joue;
     return joue;
     

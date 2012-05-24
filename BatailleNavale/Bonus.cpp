@@ -15,7 +15,7 @@ Bonus::Bonus(string name, bool finDuTour, int nbTourEffet){
 
 Bonus::~Bonus() {
 }
-
-//bool Bonus::lancerBonus(Plateau* plateau, int cibleX, int cibleY, ALLIGNEMENT align){
-//    return false;
-//}
+//virtual bool lancerBonus(Plateau* p, int cibleX, int cibleY, ALLIGNEMENT align = RIEN){return false;};
+bool Bonus::lancerBonus(Plateau* plateau, int cibleX, int cibleY, ALLIGNEMENT align){
+    return false;
+}

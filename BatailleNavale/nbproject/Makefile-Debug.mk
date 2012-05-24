@@ -46,6 +46,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/BateauCaseBonus.o \
 	${OBJECTDIR}/BonusManager.o \
 	${OBJECTDIR}/BateauCasePleine.o \
+	${OBJECTDIR}/ControlPlacementBonus.o \
 	${OBJECTDIR}/Interface.o \
 	${OBJECTDIR}/Partie.o \
 	${OBJECTDIR}/Joueur.o \
@@ -138,6 +139,11 @@ ${OBJECTDIR}/BateauCasePleine.o: BateauCasePleine.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/BateauCasePleine.o BateauCasePleine.cpp
+
+${OBJECTDIR}/ControlPlacementBonus.o: ControlPlacementBonus.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/ControlPlacementBonus.o ControlPlacementBonus.cpp
 
 ${OBJECTDIR}/Interface.o: Interface.cpp 
 	${MKDIR} -p ${OBJECTDIR}

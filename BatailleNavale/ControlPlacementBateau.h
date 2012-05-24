@@ -44,6 +44,11 @@ public:
      */
     int GetTaillePlacementBateauSuivant();
     
+    /**
+     * 
+     * @return un tableau d'int permtant de connaitre le nombre de
+     *  bateau restant a placer l'index correspond a la taille
+     */
     int* GetBateauRestanAPlacer();
     
 private:
