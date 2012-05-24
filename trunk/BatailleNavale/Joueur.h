@@ -13,12 +13,29 @@ class Joueur
     public:
         Joueur(string name, string password, Historique* historique=NULL);
         virtual ~Joueur();
-        
+        /**
+         * 
+         * @return l'historique du joueur
+         */
         Historique* GetHistorique();
         
+        /**
+         * 
+         * @return le nom du joueur
+         */
         string GetName();
+        
+        /**
+         * 
+         * @return le passowrd en clair du joueur (a modif)
+         */
         string GetPassword();
         
+        /**
+         * 
+         * @param j
+         * @return true si deux joueur on meme nom et meme passowrd
+         */
         bool IsEgal(Joueur const& j) const;
         
     protected:

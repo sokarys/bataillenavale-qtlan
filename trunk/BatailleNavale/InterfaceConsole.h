@@ -36,10 +36,33 @@ class InterfaceConsole : public Interface{
         Joueur* JoueurGagne();
         
     private:
+        /**
+         * Permet d'affiche un plateau
+         * @param str
+         * @param taillex
+         * @param tailley
+         */
        void AfficherConsole(string** str, int taillex, int tailley);
+       
+       /**
+        * ¨permet d'afficher le menu
+        */
        void AfficherMenu();
+       
+       /**
+        * Permet au joueur courant de choisir une action du menu
+        * @return 
+        */
        bool ChoixMenu();
+       
+       /**
+        * Permet d'afficher tous les plateaux
+        */
        void AfficherTout();
+       
+       /**
+        * Vide la console
+        */
        void Clear_screen();
 };
 
