@@ -82,26 +82,13 @@ class BateauCase
          * @param bonus
          */
         friend ostream& operator<< (ostream& out, BateauCase& b);
-        
-        /**
-         * Permet de set un bonus a la case.
-         * @param bonus
-         */
-        void SetBonus(Bonus* bonus);
-        
-        /**
-         * Getter du bonus de la case
-         * @return 
-         */
-        Bonus* GetBonus();
-        
+ 
     protected:
 
     private:
         int x;
         int y;
         ETAT_BATEAUCASE etat;
-        Bonus* bonus;
 };
 
 #endif // BATEAUCASE_H

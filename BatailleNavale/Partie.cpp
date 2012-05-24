@@ -226,7 +226,7 @@ void Partie::GenererNbBateau(int tailleX, int tailleY) {
         Calc+= i*Pourcentages[i];
     }
     for (int i = 0 ; i < tailleMaxBateau+1 ; i++) {
-        NbBateau[i] = round(Pourcentages[i]*tailleX*tailleY*PropBateauCase/Calc);
+        NbBateau[i] = (int) round(Pourcentages[i]*tailleX*tailleY*PropBateauCase/Calc);
     }
     for (int i = 0 ; i<=tailleBateauMax ; i++){
         this->nombreTailleBateau[i] = NbBateau[i];

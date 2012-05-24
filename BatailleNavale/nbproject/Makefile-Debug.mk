@@ -36,13 +36,14 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/Controller.o \
 	${OBJECTDIR}/BateauCase.o \
-	${OBJECTDIR}/Plateau.o \
 	${OBJECTDIR}/InterfaceConsole.o \
+	${OBJECTDIR}/Plateau.o \
 	${OBJECTDIR}/Bateau.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/JoueurPlateau.o \
 	${OBJECTDIR}/Historique.o \
 	${OBJECTDIR}/Bonus.o \
+	${OBJECTDIR}/BateauCaseBonus.o \
 	${OBJECTDIR}/BonusManager.o \
 	${OBJECTDIR}/BateauCasePleine.o \
 	${OBJECTDIR}/Interface.o \
@@ -88,15 +89,15 @@ ${OBJECTDIR}/BateauCase.o: BateauCase.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/BateauCase.o BateauCase.cpp
 
-${OBJECTDIR}/Plateau.o: Plateau.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} $@.d
-	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/Plateau.o Plateau.cpp
-
 ${OBJECTDIR}/InterfaceConsole.o: InterfaceConsole.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/InterfaceConsole.o InterfaceConsole.cpp
+
+${OBJECTDIR}/Plateau.o: Plateau.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/Plateau.o Plateau.cpp
 
 ${OBJECTDIR}/Bateau.o: Bateau.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -122,6 +123,11 @@ ${OBJECTDIR}/Bonus.o: Bonus.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/Bonus.o Bonus.cpp
+
+${OBJECTDIR}/BateauCaseBonus.o: BateauCaseBonus.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/BateauCaseBonus.o BateauCaseBonus.cpp
 
 ${OBJECTDIR}/BonusManager.o: BonusManager.cpp 
 	${MKDIR} -p ${OBJECTDIR}
