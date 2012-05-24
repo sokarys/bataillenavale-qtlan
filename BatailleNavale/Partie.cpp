@@ -4,24 +4,13 @@ using namespace std;
 /**
  * Constructeur
  */
-Partie::Partie(int tailleX, int tailleY, int* nombreTailleBateau, int tailleBateauMax)
+Partie::Partie(int tailleX, int tailleY, int tailleBateauMax)
 {
     this->tailleX = tailleX;
     this->tailleY = tailleY;
     this->joueurCourantAjoue = false;
     this->tailleBateauMax = tailleBateauMax;
-    if(nombreTailleBateau == NULL){
-        this->tailleBateauMax = 5;
-        this->nombreTailleBateau = new int[6];
-        this->nombreTailleBateau[0] = 0;
-        this->nombreTailleBateau[1] = 0;
-        this->nombreTailleBateau[2] = 1;
-        this->nombreTailleBateau[3] = 2;
-        this->nombreTailleBateau[4] = 1;
-        this->nombreTailleBateau[5] = 1;
-    }else{
-        this->nombreTailleBateau = nombreTailleBateau;
-    }
+    this->GenererNbBateau(tailleX, tailleY);
 }
 /**
  * Destructeur
@@ -227,3 +216,20 @@ int Partie::GetTailleBateauMax(){
     return this->tailleBateauMax;
 }
 
+void Partie::GenererNbBateau(int tailleX, int tailleY) {
+    int tailleMaxBateau = this->tailleBateauMax;
+    this->nombreTailleBateau = new int[this->tailleBateauMax];
+    int NbBateau[6];
+    float Pourcentages[6] = {0.0, 0.0, 0.2, 0.35, 0.3, 0.15};
+    float Calc = 0, PropBateauCase = 0.16;
+    for (int i = 0 ; i < tailleMaxBateau+1 ; i++) {
+        Calc+= i*Pourcentages[i];
+    }
+    for (int i = 0 ; i < tailleMaxBateau+1 ; i++) {
+        NbBateau[i] = round(Pourcentages[i]*tailleX*tailleY*PropBateauCase/Calc);
+        cout << NbBateau[i] << endl;
+    }
+    for (int i = 0 ; i<=tailleBateauMax ; i++){
+        this->nombreTailleBateau[i] = NbBateau[i];
+    }
+}

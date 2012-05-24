@@ -12,6 +12,7 @@
 #define DEBUG 0
 #define MIN_TAILLE_BATEAU 2
 #define MAX_TAILLE_BATEAU 5
+#define REP_SEPARATION "|"
 #define REP_EAU "E"
 #define REP_PAS_JOUE "_"
 #define REP_TOUCHE "T"
